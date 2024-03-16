@@ -3,6 +3,10 @@ on:
     - cron: '0 13 * * *'
   workflow_dispatch:
 
+permissions:
+  packages: write
+  contents: read
+ 
 jobs:
   delete-old-packages:
     runs-on: ubuntu-latest
