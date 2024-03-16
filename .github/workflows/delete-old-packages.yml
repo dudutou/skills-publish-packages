@@ -1,0 +1,15 @@
+on:
+  schedule:
+    - cron: '0 11 * * *'
+
+jobs:
+  delete-old-packages:
+    runs-on: ubuntu-latest
+    steps:
+      - name: delete-package
+        uses: actions/delete-package-versions@v5
+        with:
+          package-name: 'publish-packages/game'
+          package-type: 'container'
+          min-versions-to-keep: 1
+        
