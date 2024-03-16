@@ -1,6 +1,6 @@
 on:
   schedule:
-    - cron: '0 11 * * *'
+    - cron: '0 13 * * *'
 
 jobs:
   delete-old-packages:
@@ -12,4 +12,5 @@ jobs:
           package-name: 'publish-packages/game'
           package-type: 'container'
           min-versions-to-keep: 1
+          token: ${{ GITHUB_TOKEN }}
         
