@@ -105,7 +105,7 @@ Here's a recap of all the tasks you've accomplished in your repository:
 
 ## Test
 - add new version
-- 5
+- 6
 
 ### What's next?
 
