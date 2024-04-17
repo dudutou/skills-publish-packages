@@ -1,6 +1,6 @@
 on:
   schedule:
-    - cron: '0 13 * * *'
+    - cron: '0/6 13 * * *'
   workflow_dispatch:
 
 permissions:
@@ -8,7 +8,7 @@ permissions:
   contents: read
  
 jobs:
-  delete-old-packages:
+  delete-old-packages-1:
     runs-on: ubuntu-latest
     steps:
       - name: delete-package
@@ -18,4 +18,14 @@ jobs:
           package-type: 'container'
           min-versions-to-keep: 5
           token: ${{ secrets.GITHUB_TOKEN }}
-        
+  delete-old-packages-2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: delete-package
+        uses: actions/delete-package-versions@v5
+        with:
+          package-name: 'publish-packages/game'
+          package-type: 'container'
+          min-versions-to-keep: 5
+          token: ${{ secrets.GITHUB_TOKEN }}
+          
