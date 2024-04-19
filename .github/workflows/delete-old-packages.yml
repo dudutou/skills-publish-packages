@@ -10,22 +10,16 @@ permissions:
 jobs:
   delete-old-packages-1:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        package-name:
+          - 'publish-packages/game'
+          - 'publish-packages/game'
     steps:
       - name: delete-package
         uses: actions/delete-package-versions@v5
         with:
-          package-name: 'publish-packages/game'
+          package-name: ${{ matrix.package-name }}
           package-type: 'container'
           min-versions-to-keep: 5
           token: ${{ secrets.GITHUB_TOKEN }}
-  delete-old-packages-2:
-    runs-on: ubuntu-latest
-    steps:
-      - name: delete-package
-        uses: actions/delete-package-versions@v5
-        with:
-          package-name: 'publish-packages/game'
-          package-type: 'container'
-          min-versions-to-keep: 5
-          token: ${{ secrets.GITHUB_TOKEN }}
-          
