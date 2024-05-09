@@ -8,4 +8,6 @@ jobs:
     steps:
       - name: Event Information
         run: |
-          echo "Event '${{ github.event.action }}' received from '${{ github.event.client_payload.tag }}'"
+          echo "event_type '${{ github.event.event_type }}'"
+          echo "GITHUB_REPOSITORY '${{ github.event.client_payload.repository }}'"
+          echo "tag_name '${{ github.event.client_payload.tag_name }}'"
